@@ -114,7 +114,7 @@ function IconLink({ to, label, count, children }) {
     );
 }
 
-export default function HomeNavbar({ cartCount = 0, favoritesCount = 0 }) {
+export default function Navbar({ cartCount = 0, favoritesCount = 0 }) {
     const [open, setOpen] = useState(false);
     const { pathname, search } = useLocation();
 
