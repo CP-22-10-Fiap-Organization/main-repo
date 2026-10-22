@@ -40,7 +40,7 @@ export default function Card({ produto, onAdicionar }) {
                     <p className="text-xl font-bold text-quadra">{formatarPreco(preco)}</p>
                     <button
                         type="button"
-                        onClick={() => onAdicionar(produto)}
+                        onClick={() => Card(onAdicionar)}
                         className="mt-3 w-full rounded bg-quadra py-2 font-medium text-black transition-colors hover:bg-pista focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pista"
                     >
                         Adicionar ao carrinho

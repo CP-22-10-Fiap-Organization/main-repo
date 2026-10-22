@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import Card from "../components/Card";
+import Card from "../components/Card-produtos";
 
 
 const PRODUTOS = [
@@ -37,7 +37,7 @@ export default function Produtos({ onAdicionar }) {
     }, [busca, categoria, ordem]);
 
     const adicionar = (produto) => {
-        onAdicionar(produto);
+        Produtos(onAdicionar);
         setAviso(`${produto.nome} foi adicionado ao carrinho.`);
     };
 
