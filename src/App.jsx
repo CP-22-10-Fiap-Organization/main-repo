@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Produtos from "./pages/Produtos";
 import Home from "./pages/Home";
+import Carrinho from "./components/Carrinho";
 
 // Página provisória para rotas que ainda não foram criadas
 function EmBreve() {
@@ -42,6 +43,22 @@ export default function App() {
     });
   };
 
+  const alterarQuantidade = (id, delta) => {
+    setCarrinho((atual) =>
+      atual.map((item) =>
+        item.id === id
+          ? { ...item, quantidade: Math.max(1, item.quantidade + delta) }
+          : item
+      )
+    );
+  };
+
+  const removerDoCarrinho = (id) => {
+    setCarrinho((atual) => atual.filter((item) => item.id !== id));
+  };
+
+  const limparCarrinho = () => setCarrinho([]);
+
   const totalItens = carrinho.reduce((total, item) => total + item.quantidade, 0);
 
   return (
@@ -66,6 +83,18 @@ export default function App() {
         <Route
           path="/produtos"
           element={<Produtos onAdicionar={adicionarAoCarrinho} />}
+        />
+
+        <Route
+          path="/carrinho"
+          element={
+            <Carrinho
+              itens={carrinho}
+              onAlterarQuantidade={alterarQuantidade}
+              onRemover={removerDoCarrinho}
+              onLimpar={limparCarrinho}
+            />
+          }
         />
 
         <Route path="*" element={<EmBreve />} />
