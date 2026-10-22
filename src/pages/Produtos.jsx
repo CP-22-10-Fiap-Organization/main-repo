@@ -57,7 +57,7 @@ export default function Produtos({ onAdicionar }) {
                             onClick={() => setCategoria(c)}
                             aria-pressed={categoria === c}
                             className={`rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${categoria === c
-                                    ? "border-quadra bg-quadra text-white"
+                                    ? "border-quadra bg-quadra text-red-700"
                                     : "border-slate-300 bg-white text-slate-700 hover:border-quadra"
                                 }`}
                         >

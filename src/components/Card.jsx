@@ -8,7 +8,7 @@ export default function Card({ produto, onAdicionar }) {
         : null;
 
     return (
-        <article className="flex flex-col overflow-hidden rounded-lg border border-slate-200 bg-white">
+        <article className="flex flex-col overflow-hidden rounded-lg border border-amber-200 bg-white">
             <div
                 className="relative flex h-44 items-center justify-center text-7xl"
                 style={{ backgroundColor: cor }}
@@ -16,7 +16,7 @@ export default function Card({ produto, onAdicionar }) {
             >
                 {emoji}
                 {desconto && (
-                    <span className="absolute left-3 top-3 rounded bg-pista px-2 py-0.5 text-sm font-bold text-white">
+                    <span className="absolute left-3 top-3 rounded bg-pista px-2 py-0.5 text-sm font-bold text-black">
                         -{desconto}%
                     </span>
                 )}
