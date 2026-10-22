@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import Card from "../components/Card";
 
 
 const PRODUTOS = [
