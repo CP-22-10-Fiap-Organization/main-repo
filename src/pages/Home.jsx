@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar.jsx";
 import Footer from "../components/Footer.jsx";
+import Card from "../components/Card.jsx";
 
 const categories = [
     { slug: "futebol", label: "Futebol", color: "bg-blue-700 text-white" },
