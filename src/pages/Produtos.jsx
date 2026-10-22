@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import Card from "../components/Card-produtos";
 import { Link } from "react-router-dom";
-
+import Footer from "../components/Footer.jsx";
 
 const PRODUTOS = [
     { id: 1, nome: "Chuteira Society Velocity", categoria: "Futebol", preco: 249.9, precoAntigo: 329.9, emoji: "👟", cor: "#dbeafe" },
@@ -43,7 +43,7 @@ export default function Produtos({ onAdicionar }) {
     };
 
     return (
-        
+       <section>
         <section className="mx-auto max-w-6xl px-4 py-10">
             <Link
                 to="/"
@@ -108,7 +108,13 @@ export default function Produtos({ onAdicionar }) {
                         <Card key={p.id} produto={p} onAdicionar={adicionar} />
                     ))}
                 </div>
+                
             )}
+            
         </section>
+            <Footer />
+        </section> 
+            
     );
+    
 }
