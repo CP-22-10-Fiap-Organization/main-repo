@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Home from "./pages/Home.jsx";
+import Home from "./pages/Home";
 
 // Página provisória para rotas que ainda não foram criadas (/produtos, /login, etc.)
 function EmBreve() {
