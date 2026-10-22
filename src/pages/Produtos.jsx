@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import Card from "../components/Card-produtos";
+import { Link } from "react-router-dom";
 
 
 const PRODUTOS = [
@@ -42,7 +43,14 @@ export default function Produtos({ onAdicionar }) {
     };
 
     return (
+        
         <section className="mx-auto max-w-6xl px-4 py-10">
+            <Link
+                to="/"
+                className="mb-4 inline-block rounded border border-quadra px-4 py-2 text-sm font-medium text-quadra transition-colors hover:bg-quadra hover:text-blue-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pista"
+            >
+                Voltar para a home
+            </Link>
             <h1 className="font-display text-4xl font-bold text-quadra">Produtos</h1>
             <p className="mt-1 text-slate-600">
                 {lista.length} {lista.length === 1 ? "produto encontrado" : "produtos encontrados"}
@@ -57,7 +65,7 @@ export default function Produtos({ onAdicionar }) {
                             onClick={() => setCategoria(c)}
                             aria-pressed={categoria === c}
                             className={`rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${categoria === c
-                                    ? "border-quadra bg-quadra text-red-700"
+                                    ? "border-quadra bg-quadra text-blue-700"
                                     : "border-slate-300 bg-white text-slate-700 hover:border-quadra"
                                 }`}
                         >
