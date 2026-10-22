@@ -75,7 +75,7 @@ export default function Card({
                 <button
                     type="button"
                     onClick={() => onAddToCart?.(id)}
-                    className="mt-4 h-10 rounded-full border border-slate-900 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-900 hover:text-white"
+                    className="mt-4 h-10 border-slate-300 text-sm font-semibold text-slate-300 transition-colors hover:bg-slate-300 hover:text-white"
                 >
                     Adicionar ao carrinho
                 </button>
