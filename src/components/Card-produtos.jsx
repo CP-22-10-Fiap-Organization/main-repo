@@ -11,7 +11,7 @@ export default function Card({ produto, onAdicionar }) {
         : null;
 
     return (
-        <article className="flex flex-col overflow-hidden rounded-lg border border-amber-200 bg-white">
+        <article className="flex flex-col overflow-hidden rounded-lg border border-lime-200 bg-blue-700">
             <div
                 className="relative flex h-44 items-center justify-center text-7xl"
                 style={{ backgroundColor: cor }}
@@ -26,14 +26,14 @@ export default function Card({ produto, onAdicionar }) {
             </div>
 
             <div className="flex flex-1 flex-col gap-1 p-4">
-                <span className="text-sm text-slate-500">{categoria}</span>
+                <span className="text-sm text-white">{categoria}</span>
                 <h3 className="font-display text-xl font-semibold leading-tight">
                     {nome}
                 </h3>
 
                 <div className="mt-auto pt-3">
                     {precoAntigo && (
-                        <p className="text-sm text-slate-400 line-through">
+                        <p className="text-sm text-slate-200 line-through">
                             {formatarPreco(precoAntigo)}
                         </p>
                     )}
