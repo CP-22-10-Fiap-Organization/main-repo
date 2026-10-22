@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import HomeNavbar from "../../components/navbar/HomeNavbar";
-import HomeFooter from "../../components/footer/HomeFooter";
-import HomeCard from "../../components/card/HomeCard";
+import Navbar from "../components/Navbar.jsx";
+import Footer from "../components/Footer.jsx";
 
 const categories = [
     { slug: "futebol", label: "Futebol", color: "bg-blue-700 text-white" },
@@ -64,7 +63,7 @@ export default function Home() {
 
     return (
         <div className="flex min-h-screen flex-col bg-stone-50 text-slate-900">
-            <HomeNavbar cartCount={cartCount} favoritesCount={0} />
+            <Navbar cartCount={cartCount} favoritesCount={0} />
 
             <main className="flex-1">
                 {/* Hero */}
@@ -148,7 +147,7 @@ export default function Home() {
 
                     <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-4">
                         {featured.map((product) => (
-                            <HomeCard
+                            <Card
                                 key={product.id}
                                 {...product}
                                 onAddToCart={handleAddToCart}
@@ -202,7 +201,7 @@ export default function Home() {
 
                     <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-4">
                         {newArrivals.map((product) => (
-                            <HomeCard
+                            <Card
                                 key={product.id}
                                 {...product}
                                 onAddToCart={handleAddToCart}
@@ -250,7 +249,7 @@ export default function Home() {
                 </section>
             </main>
 
-            <HomeFooter />
+            <Footer />
 
             {/* Aviso ao adicionar ao carrinho */}
             <div
