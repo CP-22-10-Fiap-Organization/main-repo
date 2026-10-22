@@ -4,6 +4,30 @@ import Produtos from "./pages/Produtos";
 import Home from "./pages/Home";
 import Carrinho from "./components/Carrinho";
 
+// Barra "Minha Loja / Produtos / Carrinho" (aparece só na página de produtos)
+function Cabecalho({ totalItens }) {
+  return (
+    <header className="fixed inset-x-0 top-0 z-50 flex items-center justify-between bg-white px-4 py-3 shadow">
+      <Link to="/" className="font-bold text-blue-700">
+        Minha Loja
+      </Link>
+      <nav className="flex items-center gap-4">
+        <Link to="/produtos" className="text-slate-700 hover:text-blue-700">
+          Produtos
+        </Link>
+        <Link to="/carrinho" className="relative font-semibold text-blue-700">
+          🛒 Carrinho
+          {totalItens > 0 && (
+            <span className="absolute -right-4 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">
+              {totalItens}
+            </span>
+          )}
+        </Link>
+      </nav>
+    </header>
+  );
+}
+
 // Página provisória para rotas que ainda não foram criadas
 function EmBreve() {
   return (
@@ -63,26 +87,19 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <header className="flex items-center justify-between bg-white px-4 py-3 shadow">
-        <Link to="/" className="font-bold text-blue-700">
-          Minha Loja
-        </Link>
-        <nav className="flex items-center gap-4">
-          <Link to="/produtos" className="text-slate-700 hover:text-blue-700">
-            Produtos
-          </Link>
-          <Link to="/carrinho" className="font-semibold text-blue-700">
-            🛒 Carrinho ({totalItens})
-          </Link>
-        </nav>
-      </header>
-
       <Routes>
         <Route path="/" element={<Home />} />
 
         <Route
           path="/produtos"
-          element={<Produtos onAdicionar={adicionarAoCarrinho} />}
+          element={
+            <>
+              <Cabecalho totalItens={totalItens} />
+              <div className="pt-14">
+                <Produtos onAdicionar={adicionarAoCarrinho} />
+              </div>
+            </>
+          }
         />
 
         <Route
