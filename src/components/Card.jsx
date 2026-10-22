@@ -1,9 +1,12 @@
+
+
 const formatarPreco = (valor) =>
     valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
 export default function Card({ produto, onAdicionar }) {
     const { nome, categoria, preco, precoAntigo, emoji, cor } = produto;
     const desconto = precoAntigo
+    
         ? Math.round((1 - preco / precoAntigo) * 100)
         : null;
 
@@ -38,7 +41,7 @@ export default function Card({ produto, onAdicionar }) {
                     <button
                         type="button"
                         onClick={() => onAdicionar(produto)}
-                        className="mt-3 w-full rounded bg-quadra py-2 font-medium text-white transition-colors hover:bg-pista focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pista"
+                        className="mt-3 w-full rounded bg-quadra py-2 font-medium text-black transition-colors hover:bg-pista focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pista"
                     >
                         Adicionar ao carrinho
                     </button>
