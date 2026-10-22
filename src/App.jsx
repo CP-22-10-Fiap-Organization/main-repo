@@ -1,8 +1,8 @@
-
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Produtos from "./pages/Produtos";
 import Home from "./pages/Home";
+import Carrinho from "./components/Carrinho";
 
 // Página provisória para rotas que ainda não foram criadas
 function EmBreve() {
@@ -27,12 +27,75 @@ function EmBreve() {
 }
 
 export default function App() {
+  const [carrinho, setCarrinho] = useState([]);
+
+  const adicionarAoCarrinho = (produto) => {
+    setCarrinho((atual) => {
+      const existente = atual.find((item) => item.id === produto.id);
+      if (existente) {
+        return atual.map((item) =>
+          item.id === produto.id
+            ? { ...item, quantidade: item.quantidade + 1 }
+            : item
+        );
+      }
+      return [...atual, { ...produto, quantidade: 1 }];
+    });
+  };
+
+  const alterarQuantidade = (id, delta) => {
+    setCarrinho((atual) =>
+      atual.map((item) =>
+        item.id === id
+          ? { ...item, quantidade: Math.max(1, item.quantidade + delta) }
+          : item
+      )
+    );
+  };
+
+  const removerDoCarrinho = (id) => {
+    setCarrinho((atual) => atual.filter((item) => item.id !== id));
+  };
+
+  const limparCarrinho = () => setCarrinho([]);
+
+  const totalItens = carrinho.reduce((total, item) => total + item.quantidade, 0);
+
   return (
     <BrowserRouter>
+      <header className="flex items-center justify-between bg-white px-4 py-3 shadow">
+        <Link to="/" className="font-bold text-blue-700">
+          Minha Loja
+        </Link>
+        <nav className="flex items-center gap-4">
+          <Link to="/produtos" className="text-slate-700 hover:text-blue-700">
+            Produtos
+          </Link>
+          <Link to="/carrinho" className="font-semibold text-blue-700">
+            🛒 Carrinho ({totalItens})
+          </Link>
+        </nav>
+      </header>
+
       <Routes>
         <Route path="/" element={<Home />} />
 
-        <Route path="/produtos" element={<Produtos />} />
+        <Route
+          path="/produtos"
+          element={<Produtos onAdicionar={adicionarAoCarrinho} />}
+        />
+
+        <Route
+          path="/carrinho"
+          element={
+            <Carrinho
+              itens={carrinho}
+              onAlterarQuantidade={alterarQuantidade}
+              onRemover={removerDoCarrinho}
+              onLimpar={limparCarrinho}
+            />
+          }
+        />
 
         <Route path="*" element={<EmBreve />} />
       </Routes>
