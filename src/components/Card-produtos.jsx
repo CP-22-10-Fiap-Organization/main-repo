@@ -1,12 +1,9 @@
-
-
 const formatarPreco = (valor) =>
     valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
 export default function Card({ produto, onAdicionar }) {
     const { nome, categoria, preco, precoAntigo, emoji, cor } = produto;
     const desconto = precoAntigo
-    
         ? Math.round((1 - preco / precoAntigo) * 100)
         : null;
 
@@ -27,7 +24,7 @@ export default function Card({ produto, onAdicionar }) {
 
             <div className="flex flex-1 flex-col gap-1 p-4">
                 <span className="text-sm text-white">{categoria}</span>
-                <h3 className="font-display text-xl font-semibold leading-tight">
+                <h3 className="font-display text-xl font-semibold leading-tight text-white">
                     {nome}
                 </h3>
 
@@ -40,7 +37,7 @@ export default function Card({ produto, onAdicionar }) {
                     <p className="text-xl font-bold text-quadra">{formatarPreco(preco)}</p>
                     <button
                         type="button"
-                        onClick={() => Card(produto,onAdicionar)}
+                        onClick={() => onAdicionar(produto)}
                         className="mt-3 w-full rounded bg-quadra py-2 font-medium text-black transition-colors hover:bg-pista focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pista"
                     >
                         Adicionar ao carrinho

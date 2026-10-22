@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 import Card from "../components/Card-produtos";
 
-
 const PRODUTOS = [
     { id: 1, nome: "Chuteira Society Velocity", categoria: "Futebol", preco: 249.9, precoAntigo: 329.9, emoji: "👟", cor: "#dbeafe" },
     { id: 2, nome: "Bola de Campo Pro", categoria: "Futebol", preco: 129.9, emoji: "⚽", cor: "#dcfce7" },
@@ -37,7 +36,7 @@ export default function Produtos({ onAdicionar }) {
     }, [busca, categoria, ordem]);
 
     const adicionar = (produto) => {
-        Produtos(onAdicionar);
+        onAdicionar(produto);
         setAviso(`${produto.nome} foi adicionado ao carrinho.`);
     };
 
